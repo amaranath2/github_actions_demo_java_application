@@ -23,7 +23,7 @@ jobs:
       uses: 'google-github-actions/auth@v1'
       with:
         token_format: 'access_token'
-        # credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+        credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
     - name: Docker Build
       run: docker build -t asia-south1-docker.pkg.dev/github-actions-demo-400806/sample-java-app/hello-world:latest .
