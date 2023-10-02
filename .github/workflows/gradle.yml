@@ -17,5 +17,6 @@ jobs:
     
     - name: Execute Gradle build
       run: ./gradlew build
-      #    - uses: gradle/wrapper-validation-action@v1     
+
+    - run: docker build . 
     
