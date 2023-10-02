@@ -27,6 +27,13 @@ jobs:
     - name: Docker Build
       run: docker build -t asia-south1-docker.pkg.dev/github-actions-demo-400806/sample-java-app/hello-world:latest .
 
+    - name: Login to Artifact Registry
+      uses: docker/login-action@v1
+      with:
+        registry: asia-south1-docker.pkg.dev
+        username: jsonkey
+        password: ${{ steps.auth.outputs.access_token }}
+          
     - name: Push to Google Artifact Registry
       run: docker push asia-south1-docker.pkg.dev/github-actions-demo-400806/sample-java-app/hello-world:latest
     
