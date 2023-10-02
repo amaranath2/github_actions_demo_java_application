@@ -18,5 +18,18 @@ jobs:
     - name: Execute Gradle build
       run: ./gradlew build
 
-    - run: docker build . 
+    - name: 'Authenticate to Google Cloud'
+      id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+
+    - name: Docker Build
+      run: docker build -t asia-south1-docker.pkg.dev/github-actions-demo-400806/sample-java-app/hello-world:latest .
+
+    - name: Push to Google Artifact Registry
+      run: docker push asia-south1-docker.pkg.dev/github-actions-demo-400806/sample-java-app/hello-world:latest
+    
+
+    
     
