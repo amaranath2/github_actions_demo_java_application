@@ -24,14 +24,20 @@ jobs:
       with:
         credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
+    - uses: 'docker/login-action@v1'
+      with:
+        registry: 'asia-south1-docker.pkg.dev'
+        username: 'oauth2accesstoken'
+        password: '${{ steps.auth.outputs.access_token }}'
+        
    # - name: Docker Build
    #   run: docker build -t asia-south1-docker.pkg.dev/github-actions-demo-400806/sample-java-app/hello-world:latest .
 
-    - name: Configure Docker to use gcloud
-      run: |
-        gcloud auth configure-docker asia-south1-docker.pkg.dev
-        docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/sample-java-app/hello-world:latest .
-        docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/sample-java-app/hello-world:latest
+  #  - name: Configure Docker to use gcloud
+   #   run: |
+    #    gcloud auth configure-docker asia-south1-docker.pkg.dev
+    #    docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/sample-java-app/hello-world:latest .
+     #   docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/sample-java-app/hello-world:latest
           
   #  - name: Push to Google Artifact Registry
   #    run: docker push asia-south1-docker.pkg.dev/github-actions-demo-400806/sample-java-app/hello-world:latest
