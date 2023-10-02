@@ -18,14 +18,14 @@ jobs:
     - name: Execute Gradle build
       run: ./gradlew build
 
-    - name: Set up Google Cloud SDK
-      uses: GoogleCloudPlatform/github-actions/setup-gcloud@v1
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v1'
       with:
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
-        service_account_key: 8b4e0880240c2cdcff3a09bf54411204178677bb
+        credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
-    - name: Docker Build
-      run: docker build -t asia-south1-docker.pkg.dev/github-actions-demo-400806/sample-java-app/hello-world:latest .
+   # - name: Docker Build
+   #   run: docker build -t asia-south1-docker.pkg.dev/github-actions-demo-400806/sample-java-app/hello-world:latest .
 
     - name: Configure Docker to use gcloud
       run: |
