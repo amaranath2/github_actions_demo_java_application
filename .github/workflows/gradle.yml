@@ -31,7 +31,7 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: asia-south1-docker.pkg.dev
-        username: jsonkey
+        username: oauth2accesstoken
         password: ${{ steps.auth.outputs.access_token }}
           
     - name: Push to Google Artifact Registry
