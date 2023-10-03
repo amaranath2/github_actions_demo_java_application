@@ -60,7 +60,7 @@ jobs:
       run: |
         gcloud container clusters get-credentials cluster-1 --zone us-central1-a --project github-actions-demo-400806
         kubectl get nodes
-        kubectl apply -f deployment.yml -y
+        kubectl apply -f deployment.yml
   #  - name: Configure Docker to use gcloud
    #   run: |
     #    gcloud auth configure-docker asia-south1-docker.pkg.dev
