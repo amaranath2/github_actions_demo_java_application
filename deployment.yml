@@ -31,7 +31,7 @@ metadata:
   name: javawebappsvc
   namespace: gha-ns
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 80           # Port to access the service within the cluster
       targetPort: 8080     # Port that the application in the pod is listening on
