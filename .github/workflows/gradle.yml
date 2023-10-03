@@ -29,6 +29,7 @@ jobs:
       with:
         token_format: 'access_token'
         credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+        install_components: 'gke-gcloud-auth-plugin'
       #  workload_identity_provider: 'projects/136465850127/locations/global/workloadIdentityPools/gha-demo-pool/providers/gha-demo-provider'
       #  service_account: 'github-actions-demo@github-actions-demo-400806.iam.gserviceaccount.com'
     - run: echo "${{ steps.auth.outputs.access_token }}"
