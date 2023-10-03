@@ -50,6 +50,10 @@ jobs:
        version: 'v1.27.0' # default is latest stable
       id: install
 
+    - run: |
+        gcloud components install gke-gcloud-auth-plugin
+        gke-gcloud-auth-plugin --version
+    
     - name: Deploy
       run: |
         gcloud container clusters get-credentials cluster-1 --zone us-central1-a --project github-actions-demo-400806
