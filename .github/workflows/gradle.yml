@@ -53,7 +53,7 @@ jobs:
     - name: Deploy
       run: |
         gcloud container clusters get-credentials cluster-1 --zone us-central1-a --project github-actions-demo-400806
-        kubectl get nodes
+    #    kubectl get nodes
   #  - name: Configure Docker to use gcloud
    #   run: |
     #    gcloud auth configure-docker asia-south1-docker.pkg.dev
