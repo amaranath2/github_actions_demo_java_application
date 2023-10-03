@@ -15,7 +15,7 @@ spec:
       app: javawebapp
   template:
     metadata:
-	  name: javawebapppod
+      name: javawebapppod
       labels:
         app: javawebapp
     spec:
