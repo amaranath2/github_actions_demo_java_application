@@ -44,6 +44,16 @@ jobs:
     - name: Push Image to Google Cloud Artifact Registry
       run: docker push asia-south1-docker.pkg.dev/github-actions-demo-400806/sample-java-app/hello-world:latest
 
+    - name: Install Kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+       version: 'v3.2' # default is latest stable
+       id: install
+
+    - name: Deploy
+      run: |
+        gcloud container clusters get-credentials cluster-1 --zone us-central1-a --project github-actions-demo-400806
+        kubectl get nodes
   #  - name: Configure Docker to use gcloud
    #   run: |
     #    gcloud auth configure-docker asia-south1-docker.pkg.dev
